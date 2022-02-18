@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const TodaysRecommendation = ({ books }) => {
+const TodaysRecommendation = ({ books, title }) => {
   const randomBooks = Math.floor(Math.random() * books.length);
 
   const textSlice = books[randomBooks].description.slice(0, 100);
@@ -9,7 +9,7 @@ const TodaysRecommendation = ({ books }) => {
   return (
     <>
       <div className='py-2 px-4'>
-        <h1 className='font-bold mb-2'>Rekomendasi Bacaan</h1>
+        <h1 className='font-bold mb-2'>{title}</h1>
         <div className='h-40 flex bg-blue-200 shadow-lg mb-4 p-4 gap-2'>
           <div className='w-2/5 h-full'>
             <img
@@ -21,7 +21,7 @@ const TodaysRecommendation = ({ books }) => {
           <div className='w-3/5 h-full flex flex-col justify-between'>
             <p className='text-xs'>{textSlice}</p>
             <Link
-              to={`/books/${books[randomBooks].id}`}
+              to={`/books/${books[randomBooks].category_id}/${books[randomBooks].id}`}
               className='px-4 bg-purple-400 text-white text-sm font-semibold rounded text-center'
             >
               Baca Sekarang

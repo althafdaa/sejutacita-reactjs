@@ -18,7 +18,6 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getAllCategories());
-
     dispatch(getAllBooks());
   }, [dispatch]);
 
@@ -31,11 +30,13 @@ const Home = () => {
     return <Spinner />;
   }
 
+  console.log(books);
+
   return (
     <main className='container'>
       <Banner />
       <CheckApp />
-      <TodaysRecommendation books={books} />
+      <TodaysRecommendation title='Rekomendasi Hari Ini' books={books} />
       <Categories />
       <PopularBooks books={books} />
       <Footer />

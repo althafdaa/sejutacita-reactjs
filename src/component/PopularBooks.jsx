@@ -15,7 +15,9 @@ const PopularBooks = ({ books }) => {
       <h1 className='font-bold mb-2 py-2 px-4'>Buku Populer Minggu ini</h1>
       <Swiper className='h-50' slidesPerView={3}>
         <SwiperSlide className='px-4 pb-2'>
-          <Link to={`/books/${books[randomOne].id}`}>
+          <Link
+            to={`/books/${books[randomOne].category_id}/${books[randomOne].id}`}
+          >
             {" "}
             <img
               className='h-4/5 rounded-lg shadow mb-2'
@@ -27,7 +29,9 @@ const PopularBooks = ({ books }) => {
           </Link>
         </SwiperSlide>
         <SwiperSlide className='px-4 pb-2'>
-          <Link to={`/books/${books[randomTwo].id}`}>
+          <Link
+            to={`/books/${books[randomTwo].category_id}/${books[randomTwo].id}`}
+          >
             <img
               className='h-4/5 rounded-lg shadow mb-2'
               src={books[randomTwo].cover_url}
@@ -38,7 +42,9 @@ const PopularBooks = ({ books }) => {
           </Link>
         </SwiperSlide>
         <SwiperSlide className='px-4 pb-2'>
-          <Link to={`/books/${books[randomThree].id}`}>
+          <Link
+            to={`/books/${books[randomThree].category_id}/${books[randomThree].id}`}
+          >
             <img
               className='h-4/5 rounded-lg shadow mb-2'
               src={books[randomThree].cover_url}
@@ -51,7 +57,9 @@ const PopularBooks = ({ books }) => {
           </Link>
         </SwiperSlide>
         <SwiperSlide className='px-4 pb-2'>
-          <Link to={`/books/${books[randomFour].id}`}>
+          <Link
+            to={`/books/${books[randomFour].category_id}/${books[randomFour].id}`}
+          >
             <img
               className='h-4/5 rounded-lg shadow mb-2'
               src={books[randomFour].cover_url}
@@ -62,7 +70,9 @@ const PopularBooks = ({ books }) => {
           </Link>
         </SwiperSlide>
         <SwiperSlide className='px-4 pb-2'>
-          <Link to={`/books/${books[randomFive].id}`}>
+          <Link
+            to={`/books/${books[randomFive].category_id}/${books[randomFive].id}`}
+          >
             <img
               className='h-4/5 rounded-lg shadow mb-2'
               src={books[randomFive].cover_url}
@@ -73,39 +83,6 @@ const PopularBooks = ({ books }) => {
           </Link>
         </SwiperSlide>
       </Swiper>
-
-      <div className='h-50 px-4 flex gap-4'>
-        {/* <div className='h-full w-1/3 pb-2'>
-          <img
-            className='h-4/5 rounded-lg shadow mb-2'
-            src={books[randomOne].cover_url}
-            alt='buku'
-          />
-
-          <h1 className='text-xs font-semibold'>{books[randomOne].title}</h1>
-          <p className='text-xs text-gray-400'>Happiness</p>
-        </div>
-        <div className='h-full w-1/3 pb-2'>
-          <img
-            className='h-4/5 rounded-lg shadow mb-2'
-            src={books[randomTwo].cover_url}
-            alt='buku'
-          />
-
-          <h1 className='text-xs font-semibold'>{books[randomTwo].title}</h1>
-          <p className='text-xs text-gray-400'>Career</p>
-        </div>
-        <div className='h-full w-1/3 pb-2'>
-          <img
-            className='h-4/5 rounded-lg shadow mb-2'
-            src={books[randomThree].cover_url}
-            alt='buku'
-          />
-
-          <h1 className='text-xs font-semibold'>{books[randomThree].title}</h1>
-          <p className='text-xs text-gray-400'>Investment</p>
-        </div> */}
-      </div>
     </div>
   );
 };

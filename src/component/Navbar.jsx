@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FaBook } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [navOnScroll, setNavOnScroll] = useState(true);
   const scrolledPage = () => {
@@ -35,19 +37,17 @@ const Navbar = () => {
           <>
             {" "}
             <Link to='/'>Booku</Link>
-            <input
-              className='border-2 rounded-lg w-full px-2'
-              placeholder='Cari buku'
-              type='text'
-            />
-            <FaBook className='text-xl' />
+            <SearchBar />
+            <Link to='bookmark'>
+              {" "}
+              <FaBook className='text-xl' />
+            </Link>
           </>
         ) : (
           <>
-            {" "}
-            <Link className='text-2xl font-bold' to='/'>
+            <button className='text-2xl font-bold' onClick={() => navigate(-1)}>
               {"<"}
-            </Link>
+            </button>
             <div className='flex gap-4'>
               <FaBook className='text-xl' />
             </div>

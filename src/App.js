@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./component/Navbar";
+import Bookmark from "./pages/Bookmark";
 import Category from "./pages/Category";
 
 import Home from "./pages/Home";
@@ -12,8 +13,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/books/:id' element={<SingleBook />} />
+          <Route path='/books/:cat/:id' element={<SingleBook />} />
           <Route path='/category/:cat' element={<Category />} />
+          <Route path='/bookmark' element={<Bookmark />} />
         </Routes>
       </BrowserRouter>
     </div>

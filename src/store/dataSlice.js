@@ -5,11 +5,7 @@ const initialState = {
   books: [],
   booksByCategory: [],
   loaded: false,
-  happiness: [],
-  career: [],
-  productivity: [],
-  society: [],
-  investment: [],
+  booksCategory: [],
 };
 
 const dataSlice = createSlice({
@@ -28,20 +24,8 @@ const dataSlice = createSlice({
     getBooksByCategories(state, action) {
       state.booksByCategory = action.payload;
     },
-    HappinessAndMindfulBooks(state, action) {
-      state.happiness = action.payload;
-    },
-    CareerBooks(state, action) {
-      state.career = action.payload;
-    },
-    ProductivityBooks(state, action) {
-      state.productivity = action.payload;
-    },
-    SocietyBooks(state, action) {
-      state.society = action.payload;
-    },
-    InvestmentBooks(state, action) {
-      state.investment = action.payload;
+    booksCategory(state, action) {
+      state.booksCategory = action.payload;
     },
   },
 });
@@ -51,11 +35,7 @@ export const {
   dataLoaded,
   getCategories,
   getBooksByCategories,
-  HappinessAndMindfulBooks,
-  ProductivityBooks,
-  SocietyBooks,
-  CareerBooks,
-  InvestmentBooks,
+  booksCategory,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;
