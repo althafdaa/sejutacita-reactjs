@@ -1,44 +1,28 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Categories = () => {
   const categories = useSelector((state) => state.data.categories);
-  const navigate = useNavigate();
 
   return (
     <>
-      <div className='py-2 px-4'>
+      <div className='py-2 px-4 mb-4 order-2'>
         {" "}
-        <h1 className='font-bold mb-2'>Kategori</h1>
-        <Swiper
-          className='mb-4 text-center'
-          spaceBetween={20}
-          slidesPerView={"auto"}
-          breakpoints={{
-            480: {
-              slidesPerView: 2,
-            },
-            640: {
-              slidesPerView: 3,
-            },
-            768: {
-              slidesPerView: 5,
-            },
-          }}
-        >
+        <h1 className='font-bold mb-2 md:text-xl'>Kategori</h1>
+        <div className='grid gap-2 grid-cols-1 text-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
+          {" "}
           {categories.map((cat) => (
-            <SwiperSlide
+            <Link
+              className='bg-blue-200 p-2 flex items-center justify-center hover:bg-blue-400 hover:font-bold rounded shadow transition-all'
               key={cat.id}
-              className='font-semibold text-gray-600 rounded-lg text-center bg-blue-100 w-full cursor-pointer'
-              onClick={() => navigate(`/category/${Number(cat.id)}`)}
+              to={`/category/${Number(cat.id)}`}
             >
-              <Link to={`/category/${Number(cat.id)}`}>{cat.name}</Link>
-            </SwiperSlide>
+              {cat.name}
+            </Link>
           ))}
-        </Swiper>
+        </div>
       </div>
     </>
   );

@@ -4,56 +4,31 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
 const Navbar = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const [navOnScroll, setNavOnScroll] = useState(true);
-  const scrolledPage = () => {
-    const scrolled = document.documentElement.scrollTop;
-
-    if (scrolled > 200) {
-      setNavOnScroll(true);
-    }
-    setNavOnScroll(false);
-  };
-
-  window.addEventListener("scroll", scrolledPage);
-
-  const MatchRoute = (route) => {
-    if (route === location.pathname) {
-      return true;
-    }
-  };
   return (
     <header
-      className={`container py-6 px-4  ${
-        MatchRoute("/") ? "bg-blue-200" : "bg-white"
-      } ${
-        navOnScroll ? "rounded-b-lg" : "rounded-b-none"
-      } rounded-b-xl h-20 fixed top-0`}
+      className={`container py-6 px-4 bg-blue-200 rounded-b-xl h-20 fixed top-0 z-10`}
     >
-      <nav className='flex gap-4 justify-between items-center'>
-        {MatchRoute("/") ? (
-          <>
-            <Link className='font-bold' to='/'>
-              BOOKU
-            </Link>
-            <SearchBar />
-            <Link to='/bookmarks'>
-              {" "}
-              <FaBook className='text-xl' />
-            </Link>
-          </>
-        ) : (
-          <>
-            <button className='text-2xl font-bold' onClick={() => navigate(-1)}>
-              {"<"}
-            </button>
-            <Link to='/bookmarks'>
-              <FaBook className='text-xl' />
-            </Link>
-          </>
-        )}
+      <nav className='flex gap-4 items-center'>
+        <Link className='font-bold' to='/'>
+          BOOKU
+        </Link>
+        <SearchBar />
+        <Link
+          className='hidden md:block px-2 font-bold hover:bg-blue-400 rounded-xl transition-all'
+          to='/'
+        >
+          Login
+        </Link>
+        <Link
+          className='hidden md:block px-2 font-bold hover:bg-blue-400 rounded-xl transition-all'
+          to='/'
+        >
+          Register
+        </Link>
+        <Link to='/bookmarks'>
+          {" "}
+          <FaBook className='text-xl hover:text-blue-600' />
+        </Link>
       </nav>
     </header>
   );

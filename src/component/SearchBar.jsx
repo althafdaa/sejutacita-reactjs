@@ -61,51 +61,42 @@ const SearchBar = () => {
     <div className='flex gap-2 items-center relative w-full'>
       <button
         onClick={() => setByTitle((prev) => !prev)}
-        className='px-2 font-semibold hover:bg-blue-100'
+        className='px-2 font-bold hover:bg-blue-400 rounded-xl transition-all'
       >
         {byTitle ? "Title" : "Author"}
       </button>
-      <div className='w-full relative flex flex-col'>
-        {byTitle ? (
-          <input
-            className='border-2 rounded-lg w-full px-2'
-            placeholder='Cari judul buku'
-            type='text'
-            onChange={searchHandlerTitle}
-            value={inputValue}
-            ref={inputRef}
-          />
-        ) : (
-          <input
-            className='border-2 rounded-lg w-full px-2'
-            placeholder='Cari penulis buku'
-            type='text'
-            onChange={searchByAuthor}
-            value={inputValue}
-            ref={inputRef}
-          />
-        )}
+      <div className='w-full  relative flex flex-col'>
+        <input
+          className='border-2 rounded-xl w-full px-2 md:py-1 focus:outline-blue-600'
+          placeholder={`Cari ${byTitle ? "judul" : "penulis"} buku`}
+          type='text'
+          onChange={byTitle ? searchHandlerTitle : searchByAuthor}
+          value={inputValue}
+          ref={inputRef}
+        />
+
         {!clear ? (
           <FaSearch
-            className='absolute right-2 top-1 text-gray-400 cursor-pointer'
+            className='absolute right-2 top-1.5 md:top-2.5 text-gray-400 cursor-pointer'
             onClick={() => inputRef.current.focus()}
           />
         ) : (
           <FaTimes
-            className='absolute right-2 top-1 text-gray-400'
+            className='absolute right-2 top-1.5 md:top-2.5 text-gray-400'
             onClick={clearHandler}
           />
         )}
         {showSearch && (
-          <div className='absolute top-7 w-full px-2 bg-white max-h-44 overflow-y-scroll'>
+          <div className='absolute top-7 w-full px-2 bg-white max-h-44 overflow-y-scroll rounded-t-lg'>
             {filteredData.map((book) => (
               <Link
                 to={`/books/${book.category_id}/${book.id}`}
                 key={book.id}
-                className='w-full hover:bg-blue-100'
+                className='w-full border-b-2'
               >
-                <div className=' hover:bg-blue-100 py-1 border-b-2'>
-                  {book.title}
+                <div className='hover:bg-blue-100 py-2'>
+                  <h1 className=' py-1 '>{book.title}</h1>
+                  <p className='text-xs'>Authors: {book.authors}</p>
                 </div>
               </Link>
             ))}

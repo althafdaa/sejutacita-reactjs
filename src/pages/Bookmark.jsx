@@ -12,7 +12,11 @@ const Bookmark = () => {
   }, []);
 
   const deleteBookmark = (id) => {
-    if (window.confirm("Are you sure you want to remove this book ?")) {
+    if (
+      window.confirm(
+        "Are you sure you want to remove this book from bookmark ?"
+      )
+    ) {
       const filteredData = localData.filter((book) => book.id !== id);
 
       localStorage.setItem("bookmarks", JSON.stringify(filteredData));
@@ -22,7 +26,6 @@ const Bookmark = () => {
 
   return (
     <main className='container flex flex-col px-4'>
-      <h1 className='text-xl font-bold mb-4'>Your Bookmarks</h1>
       {bookmarks.length !== 0 ? (
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4'>
           {bookmarks.map((book) => (
