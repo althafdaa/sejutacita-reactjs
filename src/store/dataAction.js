@@ -80,3 +80,16 @@ export const getPagination = (id, num) => {
     fetchData();
   };
 };
+
+export const loadLocalStorage = () => {
+  return (dispatch) => {
+    const loadData = localStorage.getItem("bookmarks");
+
+    if (loadData === null) {
+      localStorage.setItem("bookmarks", JSON.stringify([]));
+    }
+    if (loadData) {
+      return JSON.parse(loadData);
+    }
+  };
+};

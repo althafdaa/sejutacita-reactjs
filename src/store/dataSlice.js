@@ -6,6 +6,7 @@ const initialState = {
   booksByCategory: [],
   loaded: false,
   booksCategory: [],
+  bookmarks: [],
 };
 
 const dataSlice = createSlice({

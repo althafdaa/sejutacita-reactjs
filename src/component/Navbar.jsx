@@ -35,10 +35,11 @@ const Navbar = () => {
       <nav className='flex gap-4 justify-between items-center'>
         {MatchRoute("/") ? (
           <>
-            {" "}
-            <Link to='/'>Booku</Link>
+            <Link className='font-bold' to='/'>
+              BOOKU
+            </Link>
             <SearchBar />
-            <Link to='bookmark'>
+            <Link to='/bookmarks'>
               {" "}
               <FaBook className='text-xl' />
             </Link>
@@ -48,9 +49,9 @@ const Navbar = () => {
             <button className='text-2xl font-bold' onClick={() => navigate(-1)}>
               {"<"}
             </button>
-            <div className='flex gap-4'>
+            <Link to='/bookmarks'>
               <FaBook className='text-xl' />
-            </div>
+            </Link>
           </>
         )}
       </nav>

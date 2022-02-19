@@ -31,7 +31,7 @@ const Category = () => {
   }
 
   return (
-    <div className='container flex flex-col px-4'>
+    <main className='container flex flex-col px-4'>
       <h1 className='text-xl font-bold mb-4'>
         {Number(params.cat) === 1 && "Happiness and Mindfulness"}
         {Number(params.cat) === 11 && "Career and Business"}
@@ -66,7 +66,7 @@ const Category = () => {
       >
         Load more ...
       </button>
-    </div>
+    </main>
   );
 };
 

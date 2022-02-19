@@ -15,7 +15,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/books/:cat/:id' element={<SingleBook />} />
           <Route path='/category/:cat' element={<Category />} />
-          <Route path='/bookmark' element={<Bookmark />} />
+          <Route path='/bookmarks' element={<Bookmark />} />
         </Routes>
       </BrowserRouter>
     </div>

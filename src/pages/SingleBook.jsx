@@ -29,9 +29,16 @@ const SingleBook = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isCopied, setisCopied] = useState(false);
-
+  const [isBookmarked, setIsBookmarked] = useState(false);
   let booksMap = books.map((book) => book);
   const bookById = booksMap.filter((book) => book.id === Number(params.id))[0];
+
+  const localData = JSON.parse(localStorage.getItem("bookmarks"));
+
+  const bookmarkHandler = () => {
+    localStorage.setItem("bookmarks", JSON.stringify([...localData, bookById]));
+    setIsBookmarked(true);
+  };
 
   useEffect(() => {
     dispatch(getAllBooksByCategoryId(cat));
@@ -40,6 +47,13 @@ const SingleBook = () => {
   if (loaded) {
     setIsLoading(false);
     dispatch(dataLoaded(false));
+    const checkBookmarks = localData.filter((data) => {
+      return data.title.toLowerCase().includes(bookById.title.toLowerCase());
+    });
+
+    checkBookmarks.length === 0
+      ? setIsBookmarked(false)
+      : setIsBookmarked(true);
   }
 
   if (isLoading) {
@@ -79,15 +93,22 @@ const SingleBook = () => {
             <button className='flex items-center justify-center gap-4 px-6 py-2 w-1/4 border-2 bg-blue-600 text-white rounded-lg hover:bg-gray-400 transition'>
               <FaBookReader className='hidden sm:block' /> Baca
             </button>
-            <button className='flex items-center justify-center gap-4 px-6 py-2 w-1/4 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-pink-200 transition'>
-              <FaHeart className='hidden sm:block' /> Bookmark
+            <button
+              className={`flex items-center justify-center gap-4 px-6 py-2 w-1/4 border-2 border-blue-600  rounded-lg ${
+                isBookmarked ? "bg-blue-600 text-white" : "text-blue-600"
+              } hover:bg-pink-200 transition`}
+              disabled={isBookmarked}
+              onClick={bookmarkHandler}
+            >
+              <FaHeart className='hidden sm:block' />
+              {isBookmarked ? "Saved" : "Bookmark"}
             </button>
           </div>
           <div className='pb-2 mb-4 border-b-2'>
             <h1 className='font-bold'>{bookById.title}</h1>
             <h2 className='font-semibold text-sm'>
               {bookById.authors.length !== 1
-                ? `${bookById.authors[0]} ${bookById.authors[1]}`
+                ? `${bookById.authors[0]} & ${bookById.authors[1]}`
                 : `${bookById.authors}`}
             </h2>
           </div>

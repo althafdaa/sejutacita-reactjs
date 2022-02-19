@@ -7,7 +7,11 @@ import PopularBooks from "../component/PopularBooks";
 import Spinner from "../component/Spinner";
 import TodaysRecommendation from "../component/TodaysRecommendation";
 import Footer from "./../component/Footer";
-import { getAllBooks, getAllCategories } from "../store/dataAction";
+import {
+  getAllBooks,
+  getAllCategories,
+  loadLocalStorage,
+} from "../store/dataAction";
 import { dataLoaded } from "../store/dataSlice";
 
 const Home = () => {
@@ -19,6 +23,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getAllCategories());
     dispatch(getAllBooks());
+    dispatch(loadLocalStorage());
   }, [dispatch]);
 
   if (loaded) {
@@ -29,7 +34,6 @@ const Home = () => {
   if (isLoading) {
     return <Spinner />;
   }
-
   console.log(books);
 
   return (
