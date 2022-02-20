@@ -10,7 +10,7 @@ export const getAllBooks = () => {
   return async (dispatch) => {
     const fetchData = async () => {
       const res = await fetch(
-        "https://asia-southeast2-sejutacita-app.cloudfunctions.net/fee-assessment-books?categoryId=1&page=0&size=999"
+        "/fee-assessment-books?categoryId=1&page=0&size=999"
       );
       const data = await res.json();
 
@@ -25,7 +25,7 @@ export const getAllBooksByCategoryId = (id) => {
   return async (dispatch) => {
     const fetchData = async () => {
       const res = await fetch(
-        `https://asia-southeast2-sejutacita-app.cloudfunctions.net/fee-assessment-books?categoryId=${id}&page=0&size=999`
+        `/fee-assessment-books?categoryId=${id}&page=0&size=999`
       );
       const data = await res.json();
 
@@ -39,9 +39,7 @@ export const getAllBooksByCategoryId = (id) => {
 export const getAllCategories = () => {
   return async (dispatch) => {
     const fetchData = async () => {
-      const res = await fetch(
-        "https://asia-southeast2-sejutacita-app.cloudfunctions.net/fee-assessment-categories"
-      );
+      const res = await fetch("/fee-assessment-categories");
       const data = await res.json();
 
       dispatch(getCategories(data));
@@ -55,7 +53,7 @@ export const getFewBooks = ({ id, num }) => {
   return async (dispatch) => {
     const fetchData = async () => {
       const res = await fetch(
-        `https://asia-southeast2-sejutacita-app.cloudfunctions.net/fee-assessment-books?categoryId=${id}&page=0&size=${num}`
+        `/fee-assessment-books?categoryId=${id}&page=0&size=${num}`
       );
       const data = await res.json();
 
@@ -70,7 +68,7 @@ export const getPagination = (id, num) => {
   return async (dispatch) => {
     const fetchData = async () => {
       const res = await fetch(
-        `https://asia-southeast2-sejutacita-app.cloudfunctions.net/fee-assessment-books?categoryId=${id}&page=0&size=${num}`
+        `/fee-assessment-books?categoryId=${id}&page=0&size=${num}`
       );
       const data = await res.json();
 
