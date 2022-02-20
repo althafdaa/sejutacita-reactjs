@@ -76,7 +76,7 @@ const SingleBook = () => {
           <div className='md:pb-20'>
             <div className='h-60 md:h-full mb-4 flex justify-center relative'>
               <img
-                className='h-full shadow-xl'
+                className='h-full shadow-xl cursor-pointer'
                 src={bookById.cover_url}
                 alt='cover'
                 onClick={onShareHandler}
@@ -87,7 +87,7 @@ const SingleBook = () => {
               />
             </div>
             <div className='flex gap-4 mb-4 justify-center'>
-              <button className='flex items-center justify-center gap-4 px-6 py-2 w-1/4 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-gray-200 transition'>
+              <button className='flex items-center justify-center gap-4 px-6 py-2 w-1/4 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-gray-200 hover:border-gray-200 transition'>
                 <FaHeadphones className='hidden sm:block' /> Dengar
               </button>
               <button className='flex items-center justify-center gap-4 px-6 py-2 w-1/4 border-2 bg-blue-600 text-white rounded-lg hover:bg-gray-400 transition'>
@@ -96,7 +96,7 @@ const SingleBook = () => {
               <button
                 className={`flex items-center justify-center gap-4 px-6 py-2 w-1/4 border-2 border-blue-600  rounded-lg ${
                   isBookmarked ? "bg-blue-600 text-white" : "text-blue-600"
-                } hover:bg-pink-200 transition`}
+                } hover:bg-pink-200 hover:border-pink-200 hover:text-blue-600 transition-all`}
                 disabled={isBookmarked}
                 onClick={bookmarkHandler}
               >

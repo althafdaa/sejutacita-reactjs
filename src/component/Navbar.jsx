@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaBook } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   return (
     <header
-      className={`container py-6 px-4 bg-blue-200 rounded-b-xl h-20 fixed top-0 z-10`}
+      className={`container py-6 px-4 h-20 fixed top-0 z-50 shadow-lg bg-white rounded-b-md`}
     >
       <nav className='flex gap-4 items-center'>
         <Link className='font-bold' to='/'>

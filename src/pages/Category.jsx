@@ -115,23 +115,21 @@ const Category = () => {
       <main className='flex flex-col px-4 w-full'>
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4'>
           {filteredData.map((book) => (
-            <>
-              <Link to={`/books/${book.category_id}/${book.id}`}>
-                <img src={book.cover_url} alt='books' />
+            <Link key={book.id} to={`/books/${book.category_id}/${book.id}`}>
+              <img src={book.cover_url} alt='books' />
 
-                <div className=''>
-                  <h2 className='font-bold'>{book.authors}</h2>
-                  <h3 className='font-semibold text-gray-400'>
-                    {Number(params.cat) === 1 && "Happiness and Mindfulness"}
-                    {Number(params.cat) === 11 && "Career and Business"}
-                    {Number(params.cat) === 12 &&
-                      "Productivity and Time Management"}
-                    {Number(params.cat) === 19 && "Society & Politics"}
-                    {Number(params.cat) === 121 && "Investment & Finance"}
-                  </h3>
-                </div>
-              </Link>
-            </>
+              <div className=''>
+                <h2 className='font-bold'>{book.authors}</h2>
+                <h3 className='font-semibold text-gray-400'>
+                  {Number(params.cat) === 1 && "Happiness and Mindfulness"}
+                  {Number(params.cat) === 11 && "Career and Business"}
+                  {Number(params.cat) === 12 &&
+                    "Productivity and Time Management"}
+                  {Number(params.cat) === 19 && "Society & Politics"}
+                  {Number(params.cat) === 121 && "Investment & Finance"}
+                </h3>
+              </div>
+            </Link>
           ))}
         </div>
 

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Banner from "../component/Banner";
 import Categories from "../component/Categories";
 import CheckApp from "../component/CheckApp";
-import Footer from "../component/Footer";
 import PopularBooks from "../component/PopularBooks";
 import Spinner from "../component/Spinner";
 import TodaysRecommendation from "../component/TodaysRecommendation";
@@ -18,6 +17,8 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const loaded = useSelector((state) => state.data.loaded);
+  const books = useSelector((state) => state.data.books);
+  const random = Math.floor(Math.random() * books.length);
 
   useEffect(() => {
     dispatch(getAllCategories());
@@ -41,17 +42,14 @@ const Home = () => {
         <CheckApp />
         <Categories />
         <div className='mb-8 grid gap-4 grid-cols-1 md:grid-cols-2 order-3'>
-          <TodaysRecommendation title='Best Seller' input={1} status='best' />
+          <TodaysRecommendation title='Best Seller' input={1} />
           <TodaysRecommendation
             title='Rekomendasi Hari Ini'
-            input={4}
-            status='recommended'
+            input={random + 1}
           />
         </div>
-        <PopularBooks />
+        <PopularBooks input={random} />
       </main>
-      <Footer />
-      {/* <div>Made by Althaf Demiandra</div> */}
     </>
   );
 };
